@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web3 AI गुरु - सिक्नुहोस् भविष्यको प्रविधि</title>
+  <title>Tech Guru - सिक्नुहोस् भविष्यको प्रविधि</title>
   <script src="https://cdn.tailwindcss.com"></script>
 <script type="importmap">
 {
@@ -21,18 +21,39 @@
   
   body {
     font-family: 'Noto Sans Devanagari', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* Smooth Entry Animations */
+  .fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Skeleton Loading Shimmer */
   @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, #f1f5f9 25%, #f8fafc 50%, #f1f5f9 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
   }
 
-  .animate-shimmer {
-    animation: shimmer 2s infinite;
-  }
-
-  /* Custom scrollbar for better aesthetics */
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -46,9 +67,18 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #cbd5e1;
   }
+
+  /* UI Polishing */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  }
 </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-900 overflow-x-hidden">
+<body class="overflow-x-hidden">
   <div id="root"></div>
 </body>
 </html>

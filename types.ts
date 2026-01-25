@@ -1,5 +1,6 @@
 
-export type CourseLevel = 'easy' | 'intermediate' | 'hard';
+export type CourseCategory = 'tech' | 'entrepreneur' | 'abacus' | 'digital-literacy';
+export type CourseLevel = 'easy' | 'intermediate' | 'hard' | 'kids' | 'teens' | 'youth';
 export type UserRole = 'New Leader' | 'Mentor' | 'Senior Mentor' | 'Admin';
 
 export interface Question {
@@ -10,12 +11,14 @@ export interface Question {
 }
 
 export interface LessonContent {
+  story?: string;
   script: string;
   vocabulary: { word: string; meaning: string }[];
   summary: string;
   captions: string[];
   quiz: Question[];
   sources?: { title: string; url: string }[];
+  imageUrl?: string;
 }
 
 export interface Lesson {
@@ -25,6 +28,7 @@ export interface Lesson {
   title: string;
   description: string;
   level: CourseLevel;
+  category: CourseCategory;
   content?: LessonContent;
 }
 

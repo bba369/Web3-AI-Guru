@@ -65,24 +65,24 @@ const QuizModal: React.FC<QuizModalProps> = ({ questions, onPass, onClose, lang 
   const isCorrectChoice = selectedIdx === currentQuestion?.newCorrectIndex;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-950/90 backdrop-blur-xl p-4 overflow-y-auto">
-      <div className="bg-white rounded-[3rem] shadow-2xl max-w-2xl w-full overflow-hidden p-8 md:p-14 my-4">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 overflow-y-auto">
+      <div className="bg-white rounded-3xl shadow-2xl max-w-xl w-full overflow-hidden p-6 md:p-10 my-4">
         {!isFinished ? (
           <>
-            <div className="flex justify-between items-center mb-10">
-              <span className="text-sm font-black text-slate-400 bg-slate-50 px-5 py-2.5 rounded-full uppercase tracking-widest">
+            <div className="flex justify-between items-center mb-6">
+              <span className="text-[10px] font-black text-slate-400 bg-slate-50 px-4 py-2 rounded-full uppercase tracking-widest">
                 {lang === 'ne' ? 'प्रश्न' : 'Question'} {currentQuestionIndex + 1} / {shuffledQuestions.length}
               </span>
-              <button onClick={onClose} className="text-slate-300 hover:text-slate-900 transition-colors p-2">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
+              <button onClick={onClose} className="text-slate-300 hover:text-slate-900 transition-colors">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             
-            <h3 className="text-3xl md:text-5xl font-black text-slate-800 mb-12 leading-tight">
+            <h3 className="text-xl md:text-3xl font-black text-slate-800 mb-8 leading-tight">
               {currentQuestion.question}
             </h3>
             
-            <div className="space-y-4 mb-10">
+            <div className="space-y-3 mb-8">
               {currentQuestion.shuffledOptions.map((option, idx) => {
                 const isSelected = selectedIdx === idx;
                 const isCorrect = idx === currentQuestion.newCorrectIndex;
@@ -101,31 +101,31 @@ const QuizModal: React.FC<QuizModalProps> = ({ questions, onPass, onClose, lang 
                     key={idx} 
                     onClick={() => handleSelect(idx)} 
                     disabled={selectedIdx !== null} 
-                    className={`w-full text-left p-6 md:p-8 rounded-[2rem] border-4 font-black text-xl md:text-3xl transition-all flex justify-between items-center ${buttonStyle}`}
+                    className={`w-full text-left p-4 md:p-6 rounded-2xl border-2 font-black text-base md:text-xl transition-all flex justify-between items-center ${buttonStyle}`}
                   >
                     <span>{option}</span>
-                    {showFeedback && isCorrect && <span className="text-2xl">✓</span>}
-                    {showFeedback && isSelected && !isCorrect && <span className="text-2xl">✕</span>}
+                    {showFeedback && isCorrect && <span className="text-xl">✓</span>}
+                    {showFeedback && isSelected && !isCorrect && <span className="text-xl">✕</span>}
                   </button>
                 );
               })}
             </div>
 
             {showFeedback && (
-              <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
-                <div className={`p-8 rounded-[2rem] mb-10 ${isCorrectChoice ? 'bg-emerald-50 border-2 border-emerald-100' : 'bg-red-50 border-2 border-red-100'}`}>
-                  <h4 className={`text-xl font-black uppercase tracking-widest mb-3 ${isCorrectChoice ? 'text-emerald-600' : 'text-red-600'}`}>
+              <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className={`p-6 rounded-2xl mb-8 ${isCorrectChoice ? 'bg-emerald-50 border border-emerald-100' : 'bg-red-50 border border-red-100'}`}>
+                  <h4 className={`text-sm font-black uppercase tracking-widest mb-2 ${isCorrectChoice ? 'text-emerald-600' : 'text-red-600'}`}>
                     {isCorrectChoice 
                       ? (lang === 'ne' ? 'सही जवाफ!' : 'Correct!') 
                       : (lang === 'ne' ? 'गलत जवाफ' : 'Incorrect')}
                   </h4>
-                  <p className="text-lg md:text-2xl font-bold text-slate-700 leading-relaxed italic">
+                  <p className="text-sm md:text-base font-bold text-slate-700 leading-relaxed italic">
                     {currentQuestion.explanation}
                   </p>
                 </div>
                 <button 
                   onClick={handleNext} 
-                  className="w-full bg-slate-900 text-white font-black py-8 rounded-[2.5rem] shadow-2xl uppercase text-sm tracking-widest transition-transform active:scale-95"
+                  className="w-full bg-slate-900 text-white font-black py-4 rounded-2xl shadow-lg uppercase text-[10px] tracking-widest active:scale-95"
                 >
                   {lang === 'ne' ? 'अर्को प्रश्न' : 'Next Question'}
                 </button>
@@ -133,17 +133,17 @@ const QuizModal: React.FC<QuizModalProps> = ({ questions, onPass, onClose, lang 
             )}
           </>
         ) : (
-          <div className="text-center py-12">
-            <div className="text-7xl mb-8">🏆</div>
-            <h3 className="text-5xl md:text-6xl font-black text-slate-900 mb-6">
+          <div className="text-center py-8">
+            <div className="text-6xl mb-6">🏆</div>
+            <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
               {lang === 'ne' ? 'नतिजा' : 'Result'}
             </h3>
-            <p className="text-2xl md:text-3xl font-bold text-slate-500 mb-12">
+            <p className="text-lg md:text-xl font-bold text-slate-500 mb-10">
               {lang === 'ne' ? `तपाईंले ${score} अंक प्राप्त गर्नुभयो।` : `You scored ${score} points.`}
             </p>
             <button 
               onClick={() => onPass((score / shuffledQuestions.length) * 10)} 
-              className="w-full bg-slate-900 text-white font-black py-8 rounded-[2.5rem] shadow-2xl uppercase text-sm tracking-widest transition-transform active:scale-95"
+              className="w-full bg-slate-900 text-white font-black py-4 rounded-2xl shadow-lg uppercase text-[10px] tracking-widest active:scale-95"
             >
               {lang === 'ne' ? 'सिकाई जारी राख्नुहोस्' : 'Continue Learning'}
             </button>

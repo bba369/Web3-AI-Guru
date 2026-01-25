@@ -1,105 +1,153 @@
 
 import { Lesson } from './types';
 
+// Web3 & Tech Track - 100 Days
+const generateTechLessons = (): Lesson[] => {
+  const lessons: Lesson[] = [];
+  const themes = [
+    "Web3 को उदय", "Blockchain को शक्ति", "Digital Wallets", "Smart Contracts", "DeFi को परिचय",
+    "NFTs र कला", "DAOs: नयाँ संगठन", "Ethereum vs Solana", "Layer 2 Solutions", "Metaverse",
+    "Crypto Security", "Tokenomics", "Mining vs Staking", "Dapps विकास", "Web3 Gaming",
+    "AI र Blockchain", "Zero Knowledge Proofs", "Stablecoins", "Gas Fees बुझौं", "IPFS र Storage",
+    "Web3 Security", "Hardware Wallets", "Bridge र Interoperability", "Regulation र Crypto", "भविष्यको इन्टरनेट"
+  ];
+
+  for (let i = 1; i <= 100; i++) {
+    const level = i <= 30 ? 'easy' : i <= 70 ? 'intermediate' : 'hard';
+    lessons.push({
+      id: `t${i}`,
+      day: i,
+      youtubeId: 'nhh86I277v0',
+      title: themes[(i - 1) % themes.length] + (i > themes.length ? ` Part ${Math.ceil(i/themes.length)}` : ''),
+      description: `प्रविधि र Web3 को संसारमा गहिरो यात्रा - दिन ${i}`,
+      level,
+      category: 'tech'
+    });
+  }
+  return lessons;
+};
+
+// Business & Entrepreneurship - 100 Days
+const generateEntrepreneurshipLessons = (): Lesson[] => {
+  const lessons: Lesson[] = [];
+  const phase1Themes = ["सुरुवात र सपना", "अवलोकनको शक्ति", "समस्या पहिचान", "मूल्य निर्धारण", "पहिलो आम्दानी"];
+  const phase2Themes = ["NEPSE को परिचय", "MeroShare", "IPO लगानी", "TMS ट्रेडिङ", "Fundamental Analysis"];
+  const phase3Themes = ["Desire", "Faith", "SWOT Analysis", "Risk Management", "Scaling Business"];
+
+  for (let i = 1; i <= 100; i++) {
+    let level: any = 'kids';
+    let title = "";
+    if (i <= 25) { level = 'kids'; title = phase1Themes[(i-1)%phase1Themes.length]; }
+    else if (i <= 55) { level = 'teens'; title = phase2Themes[(i-26)%phase2Themes.length]; }
+    else { level = 'youth'; title = phase3Themes[(i-56)%phase3Themes.length]; }
+
+    lessons.push({
+      id: `e${i}`,
+      day: i,
+      youtubeId: 'ZE2HxVaTKkk',
+      title: title + (i > 10 ? ` (${i})` : ''),
+      description: `व्यवसाय र आर्थिक स्वतन्त्रताको बाटो - दिन ${i}`,
+      level,
+      category: 'entrepreneur'
+    });
+  }
+  return lessons;
+};
+
+// Research-Based Abacus Track - 100 Days
+const generateAbacusLessons = (): Lesson[] => {
+  const lessons: Lesson[] = [];
+  const foundationalThemes = [
+    "एबाकसको ५००० वर्षको इतिहास", 
+    "Soroban र Suanpan बीचको भिन्नता", 
+    "मस्तिष्कको Neuroplasticity र Abacus", 
+    "दायाँ र बायाँ मस्तिष्कको (Hemispheres) तालमेल", 
+    "एकाग्रता (Concentration) बढाउने वैज्ञानिक विधि", 
+    "स्मरण शक्ति (Photographic Memory) को विकास", 
+    "गणितीय डर (Math Anxiety) हटाउने तरिका", 
+    "औंला र मस्तिष्कको न्यूरो-कनेक्सन", 
+    "दृश्य विधि (Visualization) को शक्ति", 
+    "मानसिक गणितको चमत्कार"
+  ];
+  const technicalThemes = [
+    "Small Friends (+)", "Small Friends (-)", "Big Friends (+)", "Big Friends (-)",
+    "Double Friends", "Mental Arithmetic Basics", "Fast Addition", "Fast Subtraction",
+    "Multiplication Magic", "Division Techniques"
+  ];
+
+  for (let i = 1; i <= 100; i++) {
+    const level = i <= 30 ? 'easy' : i <= 70 ? 'intermediate' : 'hard';
+    let title = "";
+    if (i <= 10) title = foundationalThemes[i-1];
+    else title = technicalThemes[(i - 11) % technicalThemes.length];
+
+    lessons.push({
+      id: `a${i}`,
+      day: i,
+      youtubeId: 'nhh86I277v0',
+      title: title + (i > 20 ? ` Part ${Math.floor(i/10)}` : ''),
+      description: `एबाकस र मस्तिष्क विज्ञानको गहिरो सिकाई - दिन ${i}`,
+      level,
+      category: 'abacus'
+    });
+  }
+  return lessons;
+};
+
+// Digital Literacy & Cyber Security - 30 Lessons
+const generateDigitalLiteracyLessons = (): Lesson[] => {
+  const lessons: Lesson[] = [];
+  const modules = [
+    { title: "Digital World को परिचय", desc: "स्मार्टफोन र इन्टरनेटको आधारभूत प्रयोग।" },
+    { title: "Internet र Connectivity", desc: "Wi-Fi, Mobile Data र Hotspot को सही प्रयोग।" },
+    { title: "Email र संचार", desc: "Professional Email कसरी बनाउने र पठाउने?" },
+    { title: "Search Engine को जादू", desc: "Google मा सही जानकारी कसरी खोज्ने?" },
+    { title: "Digital Footprint", desc: "तपाईंले इन्टरनेटमा छाड्ने छाप र यसको असर।" },
+    { title: "Device Security Basics", desc: "मोबाइल र ल्यापटपलाई कसरी सुरक्षित राख्ने?" },
+    { title: "App Permissions", desc: "कुन एपलाई के अनुमति दिने? बुझौं।" },
+    { title: "Software Updates", desc: "अपडेट किन आवश्यक छ? सुरक्षाका लागि अपडेट।" },
+    { title: "Public Wi-Fi को खतरा", desc: "फ्री इन्टरनेट प्रयोग गर्दा ध्यान दिनुपर्ने कुरा।" },
+    { title: "eSewa र Khalti Fraud", desc: "डिजिटल वालेटमा हुने ठगीबाट बच्ने उपाय।" },
+    { title: "Fake Lottery Calls", desc: "चिठ्ठा परेको भन्दै आउने कल र मेसेजको वास्तविकता।" },
+    { title: "ATM Cloning र Banking Scams", desc: "बैंक खाता कसरी सुरक्षित राख्ने?" },
+    { title: "Social Media Identity Theft", desc: "तपाईंको प्रोफाइल कसैले दुरुपयोग गरे के गर्ने?" },
+    { title: "Phishing Links", desc: "शंकास्पद लिंकहरु पहिचान गर्ने तरिका।" },
+    { title: "Job Scams", desc: "वैदेशिक रोजगार र पार्ट-टाइम कामको नाममा हुने ठगी।" },
+    { title: "Nepal Cyber Bureau", desc: "साइबर अपराधको उजुरी गर्ने प्रक्रिया र सम्पर्क।" },
+    { title: "Password Power", desc: "स्ट्रोङ पासवर्ड बनाउने वैज्ञानिक तरिका।" },
+    { title: "2-Factor Authentication (2FA)", desc: "सुरक्षाको दोस्रो ढोका कसरी लगाउने?" },
+    { title: "Biometric Security", desc: "Fingerprint र Face Unlock को फाइदा र जोखिम।" },
+    { title: "Password Managers", desc: "पासवर्डहरु सुरक्षित राख्ने आधुनिक तरिका।" },
+    { title: "Data Privacy", desc: "तपाईंको व्यक्तिगत जानकारी किन गोप्य राख्ने?" },
+    { title: "Electronic Transactions Act 2063", desc: "नेपालको साइबर कानून बुझौं।" },
+    { title: "Digital Wellbeing", desc: "इन्टरनेटको सही समय व्यवस्थापन र स्वास्थ्य।" },
+    { title: "Online Etiquette", desc: "डिजिटल संसारमा कस्तो व्यवहार गर्ने?" },
+    { title: "Cloud Security", desc: "Google Drive र iCloud को सुरक्षित प्रयोग।" },
+    { title: "Backup Strategies", desc: "महत्वपूर्ण डाटा सुरक्षित राख्ने तरिकाहरु।" },
+    { title: "Cyber Security Audit", desc: "आफ्नो डिजिटल सुरक्षा आफैं जाँच गर्ने तरिका।" },
+    { title: "Awareness Campaign", desc: "समुदायमा साइबर सुरक्षा चेतना कसरी फैलाउने?" },
+    { title: "Final Review", desc: "प्रमाणपत्रका लागि सबै पाठको सार।" },
+    { title: "Certification Project", desc: "आफ्नो सिकाईलाई व्यवहारमा उतारौं।" }
+  ];
+
+  modules.forEach((mod, i) => {
+    const level = i < 10 ? 'easy' : i < 20 ? 'intermediate' : 'hard';
+    lessons.push({
+      id: `dl${i + 1}`,
+      day: i + 1,
+      youtubeId: 'nhh86I277v0',
+      title: mod.title,
+      description: mod.desc,
+      level,
+      category: 'digital-literacy'
+    });
+  });
+  return lessons;
+};
+
 export const PLAYLIST_LESSONS: Lesson[] = [
-  // --- PHASE 1: FOUNDATIONS (Days 1-30) ---
-  { id: 'd1', day: 1, youtubeId: 'nhh86I277v0', title: 'Web3 को परिचय', description: 'इन्टरनेटको इतिहास र Web3 को उदय।', level: 'easy' },
-  { id: 'd2', day: 2, youtubeId: 'ZE2HxVaTKkk', title: 'Blockchain भनेको के हो?', description: 'ब्लकचेनको आधारभूत कार्यप्रणाली।', level: 'easy' },
-  { id: 'd3', day: 3, youtubeId: 'aircAruvnKk', title: 'AI को आधारभूत ज्ञान', description: 'आर्टिफिसियल इन्टेलिजेन्स के हो?', level: 'easy' },
-  { id: 'd4', day: 4, youtubeId: 'yubzJw0uiE4', title: 'Decentralization को महत्व', description: 'विकेन्द्रीकरण किन आवश्यक छ?', level: 'easy' },
-  { id: 'd5', day: 5, youtubeId: 'nhh86I277v0', title: 'Crypto Wallet सेटअप', description: 'Metamask र अन्य वालेटहरू।', level: 'easy' },
-  { id: 'd6', day: 6, youtubeId: 'ZE2HxVaTKkk', title: 'Bitcoin को इतिहास', description: 'पहिलो क्रिप्टोकरेन्सीको कथा।', level: 'easy' },
-  { id: 'd7', day: 7, youtubeId: 'aircAruvnKk', title: 'Ethereum र Smart Contracts', description: 'प्रोग्रामेबल पैसाको परिचय।', level: 'easy' },
-  { id: 'd8', day: 8, youtubeId: 'yubzJw0uiE4', title: 'Mining vs Staking', description: 'कन्सन्सस मेकानिज्महरू।', level: 'easy' },
-  { id: 'd9', day: 9, youtubeId: 'nhh86I277v0', title: 'Public vs Private Keys', description: 'क्रिप्टोग्राफीको आधार।', level: 'easy' },
-  { id: 'd10', day: 10, youtubeId: 'ZE2HxVaTKkk', title: 'Gas Fees बुझ्नुहोस्', description: 'नेटवर्क शुल्क किन लाग्छ?', level: 'easy' },
-  { id: 'd11', day: 11, youtubeId: 'aircAruvnKk', title: 'Machine Learning परिचय', description: 'मिसिनले कसरी सिक्छ?', level: 'easy' },
-  { id: 'd12', day: 12, youtubeId: 'yubzJw0uiE4', title: 'Neural Networks के हो?', description: 'मानव मस्तिष्क र AI।', level: 'easy' },
-  { id: 'd13', day: 13, youtubeId: 'nhh86I277v0', title: 'NFT को संसार', description: 'डिजिटल स्वामित्वको भविष्य।', level: 'easy' },
-  { id: 'd14', day: 14, youtubeId: 'ZE2HxVaTKkk', title: 'Stablecoins को भूमिका', description: 'Tether र USDC।', level: 'easy' },
-  { id: 'd15', day: 15, youtubeId: 'aircAruvnKk', title: 'Chatbots र NLP', description: 'भाषा प्रशोधनको जादू।', level: 'easy' },
-  { id: 'd16', day: 16, youtubeId: 'yubzJw0uiE4', title: 'Layer 1 vs Layer 2', description: 'स्केलेबिलिटी समाधानहरू।', level: 'easy' },
-  { id: 'd17', day: 17, youtubeId: 'nhh86I277v0', title: 'DeFi को उदय', description: 'परम्परागत बैंक बिनाको वित्त।', level: 'easy' },
-  { id: 'd18', day: 18, youtubeId: 'ZE2HxVaTKkk', title: 'Governance Tokens', description: 'प्रोजेक्ट कसरी चलाइन्छ?', level: 'easy' },
-  { id: 'd19', day: 19, youtubeId: 'aircAruvnKk', title: 'AI Ethics परिचय', description: 'AI का चुनौती र नैतिकता।', level: 'easy' },
-  { id: 'd20', day: 20, youtubeId: 'yubzJw0uiE4', title: 'DEX vs CEX', description: 'एक्सचेन्जहरूका प्रकार।', level: 'easy' },
-  { id: 'd21', day: 21, youtubeId: 'nhh86I277v0', title: 'Liquidity Pools', description: 'तरलता कसरी प्रदान गरिन्छ?', level: 'easy' },
-  { id: 'd22', day: 22, youtubeId: 'ZE2HxVaTKkk', title: 'Impermanent Loss', description: 'DeFi का जोखिमहरू।', level: 'easy' },
-  { id: 'd23', day: 23, youtubeId: 'aircAruvnKk', title: 'Computer Vision', description: 'मिसिनले कसरी देख्छ?', level: 'easy' },
-  { id: 'd24', day: 24, youtubeId: 'yubzJw0uiE4', title: 'Interoperability', description: 'ब्लकचेनहरू बीचको पुल।', level: 'easy' },
-  { id: 'd25', day: 25, youtubeId: 'nhh86I277v0', title: 'Web3 Privacy', description: 'डाटा सुरक्षा र गोपनीयता।', level: 'easy' },
-  { id: 'd26', day: 26, youtubeId: 'ZE2HxVaTKkk', title: 'The Merge (Ethereum)', description: 'इथेरियमको ठूलो परिवर्तन।', level: 'easy' },
-  { id: 'd27', day: 27, youtubeId: 'aircAruvnKk', title: 'Generative AI Basics', description: 'नयाँ सामग्री सिर्जना गर्ने AI।', level: 'easy' },
-  { id: 'd28', day: 28, youtubeId: 'yubzJw0uiE4', title: 'DAO परिचय', description: 'विकेन्द्रीकृत संस्थाहरू।', level: 'easy' },
-  { id: 'd29', day: 29, youtubeId: 'nhh86I277v0', title: 'Cold vs Hot Wallets', description: 'सुरक्षित भण्डारणका तरिकाहरू।', level: 'easy' },
-  { id: 'd30', day: 30, youtubeId: 'ZE2HxVaTKkk', title: 'Phase 1 Review', description: 'अहिलेसम्म सिकेका कुराको समीक्षा।', level: 'easy' },
-
-  // --- PHASE 2: INTERMEDIATE (Days 31-60) ---
-  { id: 'd31', day: 31, youtubeId: 'aircAruvnKk', title: 'Prompt Engineering', description: 'AI सँग राम्रोसँग कुरा गर्ने तरिका।', level: 'intermediate' },
-  { id: 'd32', day: 32, youtubeId: 'yubzJw0uiE4', title: 'Solidity परिचय', description: 'स्मार्ट कन्ट्र्याक्टको भाषा।', level: 'intermediate' },
-  { id: 'd33', day: 33, youtubeId: 'nhh86I277v0', title: 'Yield Farming', description: 'DeFi बाट फाइदा लिने तरिका।', level: 'intermediate' },
-  { id: 'd34', day: 34, youtubeId: 'ZE2HxVaTKkk', title: 'Flash Loans', description: 'बिना धितोको ऋण।', level: 'intermediate' },
-  { id: 'd35', day: 35, youtubeId: 'aircAruvnKk', title: 'Deepfakes र सुरक्षा', description: 'AI बाट हुने भ्रमहरू।', level: 'intermediate' },
-  { id: 'd36', day: 36, youtubeId: 'yubzJw0uiE4', title: 'Polygon र Sidechains', description: 'नेटवर्कको गति बढाउने प्रविधि।', level: 'intermediate' },
-  { id: 'd37', day: 37, youtubeId: 'nhh86I277v0', title: 'Oracle Network (Chainlink)', description: 'बाहिरी डाटा ब्लकचेनमा ल्याउने।', level: 'intermediate' },
-  { id: 'd38', day: 38, youtubeId: 'ZE2HxVaTKkk', title: 'Tokenomics', description: 'टोकनको अर्थशास्त्र।', level: 'intermediate' },
-  { id: 'd39', day: 39, youtubeId: 'aircAruvnKk', title: 'Fine-tuning Models', description: 'AI मोडललाई तालिम दिने।', level: 'intermediate' },
-  { id: 'd40', day: 40, youtubeId: 'yubzJw0uiE4', title: 'IPFS र Storage', description: 'विकेन्द्रीकृत फाइल भण्डारण।', level: 'intermediate' },
-  { id: 'd41', day: 41, youtubeId: 'nhh86I277v0', title: 'GameFi र Metaverse', description: 'गेम र Web3 को संगम।', level: 'intermediate' },
-  { id: 'd42', day: 42, youtubeId: 'ZE2HxVaTKkk', title: 'Staking Derivatives', description: 'तरल स्ट्याकिङ।', level: 'intermediate' },
-  { id: 'd43', day: 43, youtubeId: 'aircAruvnKk', title: 'Reinforcement Learning', description: 'पुरस्कार मार्फत सिकाउने।', level: 'intermediate' },
-  { id: 'd44', day: 44, youtubeId: 'yubzJw0uiE4', title: 'Bridge Security', description: 'पुलहरूको सुरक्षा चुनौती।', level: 'intermediate' },
-  { id: 'd45', day: 45, youtubeId: 'nhh86I277v0', title: 'SocialFi परिचय', description: 'सामाजिक सञ्जालको भविष्य।', level: 'intermediate' },
-  { id: 'd46', day: 46, youtubeId: 'ZE2HxVaTKkk', title: 'NFT Utility', description: 'Ownership भन्दा बढी के छ?', level: 'intermediate' },
-  { id: 'd47', day: 47, youtubeId: 'aircAruvnKk', title: 'Large Language Models (LLM)', description: 'GPT र अन्य मोडलहरू।', level: 'intermediate' },
-  { id: 'd48', day: 48, youtubeId: 'yubzJw0uiE4', title: 'Optimistic Rollups', description: 'L2 को गहिरो अध्ययन।', level: 'intermediate' },
-  { id: 'd49', day: 49, youtubeId: 'nhh86I277v0', title: 'Zk-Rollups परिचय', description: 'गोप्य र छिटो नेटवर्क।', level: 'intermediate' },
-  { id: 'd50', day: 50, youtubeId: 'ZE2HxVaTKkk', title: 'MEV बुझ्नुहोस्', description: 'Miner Extractable Value।', level: 'intermediate' },
-  { id: 'd51', day: 51, youtubeId: 'aircAruvnKk', title: 'AI in Web3 Development', description: 'कोड लेख्न AI को प्रयोग।', level: 'intermediate' },
-  { id: 'd52', day: 52, youtubeId: 'yubzJw0uiE4', title: 'Multi-sig Wallets', description: 'सुरक्षाका लागि धेरै हस्ताक्षर।', level: 'intermediate' },
-  { id: 'd53', day: 53, youtubeId: 'nhh86I277v0', title: 'The Graph (Indexing)', description: 'ब्लकचेन डाटा खोज्ने।', level: 'intermediate' },
-  { id: 'd54', day: 54, youtubeId: 'ZE2HxVaTKkk', title: 'Curve र StableSwap', description: 'स्टेबलक्वाइन एक्सचेन्ज।', level: 'intermediate' },
-  { id: 'd55', day: 55, youtubeId: 'aircAruvnKk', title: 'Vector Databases', description: 'AI को सम्झना शक्ति।', level: 'intermediate' },
-  { id: 'd56', day: 56, youtubeId: 'yubzJw0uiE4', title: 'Smart Contract Audits', description: 'कोडको गहिरो जाँच।', level: 'intermediate' },
-  { id: 'd57', day: 57, youtubeId: 'nhh86I277v0', title: 'Lens Protocol परिचय', description: 'Web3 सामाजिक प्रोफाइल।', level: 'intermediate' },
-  { id: 'd58', day: 58, youtubeId: 'ZE2HxVaTKkk', title: 'Governance in DAOs', description: 'भोटिङ र प्रस्तावहरू।', level: 'intermediate' },
-  { id: 'd59', day: 59, youtubeId: 'aircAruvnKk', title: 'AI र Blockchain एकीकरण', description: 'भविष्यको तालमेल।', level: 'intermediate' },
-  { id: 'd60', day: 60, youtubeId: 'yubzJw0uiE4', title: 'Phase 2 Review', description: 'मध्यम स्तरको ज्ञानको समीक्षा।', level: 'intermediate' },
-
-  // --- PHASE 3: ADVANCED (Days 61-95) ---
-  { id: 'd61', day: 61, youtubeId: 'nhh86I277v0', title: 'Zero Knowledge Proofs (Deep)', description: 'प्रविधि र यसका प्रयोगहरू।', level: 'hard' },
-  { id: 'd62', day: 62, youtubeId: 'ZE2HxVaTKkk', title: 'EigenLayer र Restaking', description: 'नयाँ सुरक्षा मोडेल।', level: 'hard' },
-  { id: 'd63', day: 63, youtubeId: 'aircAruvnKk', title: 'AI Agents (Autonomous)', description: 'आफै चल्ने एजेन्टहरू।', level: 'hard' },
-  { id: 'd64', day: 64, youtubeId: 'yubzJw0uiE4', title: 'Sharding प्रविधि', description: 'डाटाबेस विभाजन।', level: 'hard' },
-  { id: 'd65', day: 65, youtubeId: 'nhh86I277v0', title: 'Decentralized Identity', description: 'तपाईंको डिजिटल पहिचान।', level: 'hard' },
-  { id: 'd66', day: 66, youtubeId: 'ZE2HxVaTKkk', title: 'Cross-chain Messaging', description: 'सञ्चारका नयाँ तरिकाहरू।', level: 'hard' },
-  { id: 'd67', day: 67, youtubeId: 'aircAruvnKk', title: 'Diffusion Models', description: 'छवि सिर्जना गर्ने AI।', level: 'hard' },
-  { id: 'd68', day: 68, youtubeId: 'yubzJw0uiE4', title: 'Account Abstraction (EIP-4337)', description: 'वालेटको भविष्य।', level: 'hard' },
-  { id: 'd69', day: 69, youtubeId: 'nhh86I277v0', title: 'Dune Analytics', description: 'डाटा विश्लेषण गर्न सिक्नुहोस्।', level: 'hard' },
-  { id: 'd70', day: 70, youtubeId: 'ZE2HxVaTKkk', title: 'Hyperstructures', description: 'स्थायी डिजिटल सेवाहरू।', level: 'hard' },
-  { id: 'd71', day: 71, youtubeId: 'aircAruvnKk', title: 'Transformer Architecture', description: 'AI क्रान्तिको मुटु।', level: 'hard' },
-  { id: 'd72', day: 72, youtubeId: 'yubzJw0uiE4', title: 'Modular Blockchains (Celestia)', description: 'नयाँ ब्लकचेन डिजाइन।', level: 'hard' },
-  { id: 'd73', day: 73, youtubeId: 'nhh86I277v0', title: 'Soulbound Tokens (SBT)', description: 'हस्तान्तरण गर्न नसकिने टोकन।', level: 'hard' },
-  { id: 'd74', day: 74, youtubeId: 'ZE2HxVaTKkk', title: 'Full Chain Games', description: 'सबै कुरा ब्लकचेनमा।', level: 'hard' },
-  { id: 'd75', day: 75, youtubeId: 'aircAruvnKk', title: 'AutoGPT र BabyAGI', description: 'एजेन्टहरूको अर्को पुस्ता।', level: 'hard' },
-  { id: 'd76', day: 76, youtubeId: 'yubzJw0uiE4', title: 'Liquid Staking (LST)', description: 'Lido र Rocket Pool।', level: 'hard' },
-  { id: 'd77', day: 77, youtubeId: 'nhh86I277v0', title: 'Real World Assets (RWA)', description: 'घर जग्गा ब्लकचेनमा।', level: 'hard' },
-  { id: 'd78', day: 78, youtubeId: 'ZE2HxVaTKkk', title: 'Appchains (Cosmos/Polkadot)', description: 'एप-विशिष्ट ब्लकचेन।', level: 'hard' },
-  { id: 'd79', day: 79, youtubeId: 'aircAruvnKk', title: 'Multimodal AI', description: 'आवाज, भिडियो र पाठ।', level: 'hard' },
-  { id: 'd80', day: 80, youtubeId: 'yubzJw0uiE4', title: 'Quantum Computing vs Blockchain', description: 'भविष्यको चुनौती।', level: 'hard' },
-  { id: 'd81', day: 81, youtubeId: 'nhh86I277v0', title: 'Proto-Danksharding', description: 'Ethereum को नयाँ चरण।', level: 'hard' },
-  { id: 'd82', day: 82, youtubeId: 'ZE2HxVaTKkk', title: 'Decentralized Science (DeSci)', description: 'विज्ञानमा Web3 को प्रयोग।', level: 'hard' },
-  { id: 'd83', day: 83, youtubeId: 'aircAruvnKk', title: 'Federated Learning', description: 'गोप्य डाटामा AI तालिम।', level: 'hard' },
-  { id: 'd84', day: 84, youtubeId: 'yubzJw0uiE4', title: 'zkEVMs (Polygon/zkSync)', description: 'स्केल गर्ने नयाँ उपाय।', level: 'hard' },
-  { id: 'd85', day: 85, youtubeId: 'nhh86I277v0', title: 'Web3 Cybersecurity (Advanced)', description: 'ह्याकरहरूबाट बच्ने तरिका।', level: 'hard' },
-  { id: 'd86', day: 86, youtubeId: 'ZE2HxVaTKkk', title: 'Stablecoin Regulation', description: 'कानुनी चुनौतीहरू।', level: 'hard' },
-  { id: 'd87', day: 87, youtubeId: 'aircAruvnKk', title: 'Synthetic Data Generation', description: 'नक्कली तर उपयोगी डाटा।', level: 'hard' },
-  { id: 'd88', day: 88, youtubeId: 'yubzJw0uiE4', title: 'The Future of DAOs', description: '२०३० सम्मका सम्भावना।', level: 'hard' },
-  { id: 'd89', day: 89, youtubeId: 'nhh86I277v0', title: 'Parallel Execution', description: 'Solana र Monad को जादू।', level: 'hard' },
-  { id: 'd90', day: 90, youtubeId: 'ZE2HxVaTKkk', title: 'Web3 Mass Adoption', description: 'सबैको हातमा कसरी पुग्छ?', level: 'hard' },
-  { id: 'd91', day: 91, youtubeId: 'aircAruvnKk', title: 'AGI (Artificial General Intelligence)', description: 'के हामी त्यहाँ पुग्दैछौं?', level: 'hard' },
-  { id: 'd92', day: 92, youtubeId: 'yubzJw0uiE4', title: 'Global Tech Economy', description: 'नयाँ आर्थिक प्रणाली।', level: 'hard' },
-  { id: 'd93', day: 93, youtubeId: 'nhh86I277v0', title: 'Personal Brand in Web3', description: 'तपाईंको क्यारियर मार्ग।', level: 'hard' },
-  { id: 'd94', day: 94, youtubeId: 'ZE2HxVaTKkk', title: 'Final Capstone Ideas', description: 'प्रोजेक्ट बनाउने सोच।', level: 'hard' },
-  { id: 'd95', day: 95, youtubeId: 'aircAruvnKk', title: 'Graduation & Beyond', description: 'बधाई छ! अब के गर्ने?', level: 'hard' }
+  ...generateTechLessons(),
+  ...generateEntrepreneurshipLessons(),
+  ...generateAbacusLessons(),
+  ...generateDigitalLiteracyLessons()
 ];
